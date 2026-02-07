@@ -1,0 +1,123 @@
+<html>
+<body>
+    <script src="https://js.puter.com/v2/"></script>
+    <script>
+        puter.ai.chat("Explain the concept of black holes in simple terms", {
+            model: 'gemini-3-flash-preview'
+        }).then(response => {
+            puter.print(response);
+        });
+    </script>
+</body>
+</html>
+<html>
+<body>
+    <script src="https://js.puter.com/v2/"></script>
+    <script>
+        puter.ai.chat("What are the major differences between renewable and non-renewable energy sources?", {
+            model: 'gemini-3-pro-preview'
+        }).then(response => {
+            puter.print(response);
+        });
+    </script>
+</body>
+</html>
+<html>
+<body>
+    <div id="output"></div>
+    <script src="https://js.puter.com/v2/"></script>
+    <script>
+        async function streamResponses() {
+            const outputDiv = document.getElementById('output');
+            
+            // Gemini 3 Flash with streaming
+            outputDiv.innerHTML += '<h2>Gemini 3 Flash Response:</h2>';
+            const flashResponse = await puter.ai.chat(
+                "Explain the process of photosynthesis in detail",
+                {
+                    model: 'gemini-3-flash-preview',
+                    stream: true
+                }
+            );
+            
+            for await (const part of flashResponse) {
+                if (part?.text) {
+                    outputDiv.innerHTML += part.text.replaceAll('\n', '<br>');
+                }
+            }            
+        }
+
+        streamResponses();
+    </script>
+</body>
+</html>
+<html>
+<body>
+    <script src="https://js.puter.com/v2/"></script>
+    <script>
+    (async () => {
+        // Gemini 3 Flash
+        const flash3_resp = await puter.ai.chat(
+            'Tell me something interesting about quantum mechanics.',
+            {model: 'gemini-3-flash-preview', stream: true}
+        );
+        puter.print('<h2>Gemini 3 Flash Response:</h2>');
+        for await (const part of flash3_resp) {
+            if (part?.text) {
+                puter.print(part.text.replaceAll('\n', '<br>'));
+            }
+        }
+
+        // Gemini 3 Pro
+        const pro3_resp = await puter.ai.chat(
+            'Tell me something interesting about quantum mechanics.',
+            {model: 'gemini-3-pro-preview', stream: true}
+        );
+        puter.print('<h2>Gemini 3 Pro Response:</h2>');
+        for await (const part of pro3_resp) {
+            if (part?.text) {
+                puter.print(part.text.replaceAll('\n', '<br>'));
+            }
+        }
+
+        // Gemini 2.5 Pro
+        const pro_resp = await puter.ai.chat(
+            'Tell me something interesting about quantum mechanics.',
+            {model: 'gemini-2.5-pro', stream: true}
+        );
+        puter.print('<h2>Gemini 2.5 Pro Response:</h2>');
+        for await (const part of pro_resp) {
+            if (part?.text) {
+                puter.print(part.text.replaceAll('\n', '<br>'));
+            }
+        }
+
+        // Gemini 2.5 Flash
+        const flash_resp = await puter.ai.chat(
+            'Tell me something interesting about quantum mechanics.',
+            {model: 'gemini-2.5-flash', stream: true}
+        );
+        puter.print('<h2>Gemini 2.5 Flash Response:</h2>');
+        for await (const part of flash_resp) {
+            if (part?.text) {
+                puter.print(part.text.replaceAll('\n', '<br>'));
+            }
+        }
+    })();
+    </script>
+</body>
+</html>
+gemini-3-pro-preview
+gemini-3-flash-preview
+gemini-2.5-pro-preview-05-06
+gemini-2.5-pro-preview
+gemini-2.5-pro
+gemini-2.5-flash-preview-09-2025
+gemini-2.5-flash-lite-preview-09-2025
+gemini-2.5-flash-lite
+gemini-2.5-flash
+gemini-2.0-flash-lite-001
+gemini-2.0-flash-lite
+gemini-2.0-flash-exp:free
+gemini-2.0-flash-001
+gemini-2.0-flash
